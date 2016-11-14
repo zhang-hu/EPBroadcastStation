@@ -178,30 +178,32 @@ static NSString *const EPBroadcasterKey = @"EPBroadcastStation.Internal.EPBroadc
 - (void)processNotification:(NSNotification *)notification
 {
     EPBroadcaster *broadcaster = notification.userInfo[EPBroadcasterKey];
-    NSArray<id> *arr;
+    NSHashTable<id> *result;
     if (broadcaster.messageId == [EPPlaceholderMessageId placeholder]) {
-        arr = [self allObservers];
+        result = [self allObservers];
     } else {
-        NSMutableArray<id> *tmp = [NSMutableArray arrayWithArray:[self observersForMessageId:broadcaster.messageId].allObjects];
-        [tmp addObjectsFromArray:[self observersForMessageId:nil].allObjects];
-        arr = tmp.copy;
+        result = [self observersForMessageId:broadcaster.messageId];
+        [[self observersForMessageId:nil].allObjects enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [result addObject:obj];
+        }];
     }
-    [broadcaster broadcastToObservers:arr];
+    [broadcaster broadcastToObservers:result];
 }
 
-- (nullable NSArray<id> *)allObservers
+- (NSHashTable<id> *)allObservers
 {
-    NSMutableArray *arr = [NSMutableArray array];
+    NSHashTable<id> *result = [NSHashTable weakObjectsHashTable];
     
     [self.mapTableOpLock lock];
     for (id key in self.msgIdToObserversMap) {
-        [self.hashTableOpLock lock];
-        [arr addObjectsFromArray:[self.msgIdToObserversMap objectForKey:key].allObjects];
-        [self.hashTableOpLock unlock];
+        NSHashTable<id> *hashTable = [self.msgIdToObserversMap objectForKey:key];
+        [hashTable.allObjects enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [result addObject:obj];
+        }];
     }
     [self.mapTableOpLock unlock];
     
-    return arr.copy;
+    return result;
 }
 
 - (nullable NSHashTable<id> *)observersForMessageId:(nullable id)msgId

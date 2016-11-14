@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, EPBroadcastStyle) {
 typedef NS_OPTIONS(NSUInteger, EPMessageCoalescing) {
     EPMessageNoCoalescing = 0,
     EPMessageCoalescingOnMessageId = 1 << 0
+    //TODO: v0.2.0
 };
 
 

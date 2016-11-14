@@ -22,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)instanceWithMessageId:(id)messageId
                        broadcastBlock:(void(^)(id))broadcastBlock
                broadcastDispatchQueue:(nullable dispatch_queue_t)broadcastDispatchQueue;
-- (void)broadcastToObservers:(NSArray<id> *)observers;
+
+- (void)broadcastToObservers:(NSHashTable<id> *)observers;
 
 @end
 

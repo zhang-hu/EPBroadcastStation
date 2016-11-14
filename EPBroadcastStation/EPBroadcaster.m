@@ -52,23 +52,31 @@ NS_ASSUME_NONNULL_BEGIN
     return instance;
 }
 
-- (void)broadcastToObservers:(NSArray<id> *)observers
+- (void)broadcastToObservers:(NSHashTable<id> *)observers
 {
     typeof(self) __weak weakSelf = self;
-    [observers.copy enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    for (id obj in observers) {
         typeof(weakSelf) __strong strongSelf = weakSelf;
+        id __weak weakObj = obj;
         if (weakSelf.queue) {
             [weakSelf.queue addOperationWithBlock:^{
-                strongSelf.broadcastBlock(obj);
+                [strongSelf __broadcastToObserver:weakObj];
             }];
         } else if (weakSelf.dispatchQueue) {
             dispatch_async(weakSelf.dispatchQueue, ^{
-                strongSelf.broadcastBlock(obj);
+                [strongSelf __broadcastToObserver:weakObj];
             });
         } else {
-            weakSelf.broadcastBlock(obj);
+            [weakSelf __broadcastToObserver:obj];
         }
-    }];
+    }
+}
+
+- (void)__broadcastToObserver:(id)observer
+{
+    if (observer && self.broadcastBlock) {
+        self.broadcastBlock(observer);
+    }
 }
 
 @end
