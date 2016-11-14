@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1419EE6B1DD9515B0095EA9C /* EPPlaceholderMessageId.m in Sources */ = {isa = PBXBuildFile; fileRef = 1419EE6A1DD9515B0095EA9C /* EPPlaceholderMessageId.m */; };
 		144D35F81DD5651E001B1B36 /* EPBroadcastStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D35F71DD5651E001B1B36 /* EPBroadcastStation.m */; };
 		144D35F91DD5651E001B1B36 /* EPBroadcastStation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 144D35F61DD5651E001B1B36 /* EPBroadcastStation.h */; };
+		14AAFA5C1DD569D300047CA0 /* EPBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AAFA5B1DD569D300047CA0 /* EPBroadcaster.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +27,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1419EE691DD9515B0095EA9C /* EPPlaceholderMessageId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPlaceholderMessageId.h; sourceTree = "<group>"; };
+		1419EE6A1DD9515B0095EA9C /* EPPlaceholderMessageId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPlaceholderMessageId.m; sourceTree = "<group>"; };
 		144D35F31DD5651E001B1B36 /* libEPBroadcastStation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEPBroadcastStation.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		144D35F61DD5651E001B1B36 /* EPBroadcastStation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPBroadcastStation.h; sourceTree = "<group>"; };
 		144D35F71DD5651E001B1B36 /* EPBroadcastStation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EPBroadcastStation.m; sourceTree = "<group>"; };
+		14AAFA5A1DD569D300047CA0 /* EPBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPBroadcaster.h; sourceTree = "<group>"; };
+		14AAFA5B1DD569D300047CA0 /* EPBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPBroadcaster.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,10 @@
 			children = (
 				144D35F61DD5651E001B1B36 /* EPBroadcastStation.h */,
 				144D35F71DD5651E001B1B36 /* EPBroadcastStation.m */,
+				14AAFA5A1DD569D300047CA0 /* EPBroadcaster.h */,
+				14AAFA5B1DD569D300047CA0 /* EPBroadcaster.m */,
+				1419EE691DD9515B0095EA9C /* EPPlaceholderMessageId.h */,
+				1419EE6A1DD9515B0095EA9C /* EPPlaceholderMessageId.m */,
 			);
 			path = EPBroadcastStation;
 			sourceTree = "<group>";
@@ -124,6 +134,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				144D35F81DD5651E001B1B36 /* EPBroadcastStation.m in Sources */,
+				14AAFA5C1DD569D300047CA0 /* EPBroadcaster.m in Sources */,
+				1419EE6B1DD9515B0095EA9C /* EPPlaceholderMessageId.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +182,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -211,7 +223,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -255,6 +267,7 @@
 				144D35FE1DD5651E001B1B36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
