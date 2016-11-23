@@ -24,9 +24,9 @@ typedef NS_OPTIONS(NSUInteger, EPMessageCoalescing) {
 
 
 /**
- * (The 'EP' is the abb. of 'Empty Prefix' :))
+ * (The 'EP' is the abbr. of 'Empty Prefix' :))
  * @author  张虎
- * @version  0.1.0
+ * @version  0.1.1
  */
 @interface EPBroadcastStation : NSObject
 
@@ -36,6 +36,7 @@ typedef NS_OPTIONS(NSUInteger, EPMessageCoalescing) {
 
 - (void)addObserver:(id)observer forMessageId:(nullable id)messageId;
 - (void)removeObserver:(id)observer forMessageId:(nullable id)messageId;
+- (void)removeAllObserversForMessageId:(nullable id)messageId;
 - (void)removeObserver:(id)observer;
 
 - (void)broadcastMessageWithBlock:(void(^)(id _Nonnull observer))block

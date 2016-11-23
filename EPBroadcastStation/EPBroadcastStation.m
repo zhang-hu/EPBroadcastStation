@@ -92,6 +92,13 @@ static NSString *const EPBroadcasterKey = @"EPBroadcastStation.Internal.EPBroadc
     }
 }
 
+- (void)removeAllObserversForMessageId:(nullable id)messageId
+{
+    [self.mapTableOpLock lock];
+    [self.msgIdToObserversMap removeObjectForKey:messageId ?: [EPPlaceholderMessageId placeholder]];
+    [self.mapTableOpLock unlock];
+}
+
 - (void)removeObserver:(id)observer
 {
     [self removeObserver:observer forMessageId:nil];
